@@ -1,12 +1,18 @@
 import { useState } from 'react';
+import { Auth } from './pages/Auth';
+import { Playlists } from './components/Playlists';
 
 function App() {
-  const [count, setCount] = useState(0);
+  const [isLogged, setIsLogged] = useState(false);
 
   return (
-    <div>
-      <h1 className="text-3xl underline font-bold">Hello World!</h1>
-    </div>
+    <>
+      <div className="p-6">
+        <Auth />
+
+        <Playlists />
+      </div>
+    </>
   );
 }
 
