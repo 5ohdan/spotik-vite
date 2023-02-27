@@ -1,12 +1,10 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Playlist } from 'spotify-types';
+import { useStore } from '../store';
 
-interface ModalProps {
-  playlistId: string;
-}
-
-export const Modal = ({ playlistId }: ModalProps) => {
+export const Modal = () => {
+  const { selectedPlaylist, setSelectedPlaylist } = useStore();
   const [playlist, setPlaylist] = useState<Playlist>();
 
   const getPlaylist = async (id: string) => {
@@ -23,20 +21,28 @@ export const Modal = ({ playlistId }: ModalProps) => {
   };
 
   useEffect(() => {
-    getPlaylist(playlistId);
-  }, [playlistId]);
+    selectedPlaylist && getPlaylist(selectedPlaylist);
+  }, [selectedPlaylist]);
   {
     /*@ts-ignore*/
     console.log(playlist?.tracks.items);
   }
 
   return (
-    <div>
-      <span>{playlist?.name}</span>
+    <div className="bg-gray-800 text-white rounded-lg p-4">
+      <span className="text-2xl font-bold">{playlist?.name}</span>
+      <button
+        className="bg-green-500 p-2 m-2"
+        onClick={() => setSelectedPlaylist(null)}
+      >
+        X
+      </button>
       <ul>
         {/*@ts-ignore*/}
         {playlist?.tracks?.items?.map((track) => (
-          <li key={track.track.id}>{track.track.name}</li>
+          <li className="bg-gray-700 rounded-md p-2 my-2" key={track.track.id}>
+            {track.track.name}
+          </li>
         ))}
       </ul>
     </div>

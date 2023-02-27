@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import autoAnimate from '@formkit/auto-animate';
+
+import { useEffect, useState, useRef } from 'react';
 
 import { PlaylistsItem } from './PlaylistsItem';
 
@@ -11,6 +13,7 @@ export const Playlists = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
 
   const [playlists, setPlaylists] = useState<SimplifiedPlaylist[]>();
+  const parent = useRef(null);
 
   const getPlaylists = async () => {
     const result = await axios.get('https://api.spotify.com/v1/me/playlists', {
@@ -26,11 +29,13 @@ export const Playlists = () => {
     getPlaylists();
   }, []);
 
+  useEffect(() => {
+    parent.current && autoAnimate(parent.current);
+  }, [parent]);
+
   return (
-    <div>
-      {typeof selectedPlaylist === 'string' && (
-        <Modal playlistId={selectedPlaylist} />
-      )}
+    <div className="my-4" ref={parent}>
+      {typeof selectedPlaylist === 'string' && <Modal />}
       <ul className="flex flex-row gap-5 flex-wrap pt-4">
         {playlists &&
           playlists.map((playlist) => {
