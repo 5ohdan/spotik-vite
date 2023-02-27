@@ -30,13 +30,15 @@ export const Modal = () => {
 
   return (
     <div className="bg-gray-800 text-white rounded-lg p-4">
-      <span className="text-2xl font-bold">{playlist?.name}</span>
-      <button
-        className="bg-green-500 p-2 m-2"
-        onClick={() => setSelectedPlaylist(null)}
-      >
-        X
-      </button>
+      <div className="flex justify-between items-center">
+        <span className="text-2xl font-bold">{playlist?.name}</span>
+        <button
+          className="bg-green-500 p-2 rounded-md"
+          onClick={() => setSelectedPlaylist(null)}
+        >
+          X
+        </button>
+      </div>
       <ul>
         {/*@ts-ignore*/}
         {playlist?.tracks?.items?.map((track) => (
