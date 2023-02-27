@@ -3,14 +3,14 @@ import { useEffect, useState } from 'react';
 
 import { PlaylistsItem } from './PlaylistsItem';
 
-import { Playlist } from 'spotify-types';
+import { SimplifiedPlaylist } from 'spotify-types';
 import { Modal } from '../ui/Modal';
 import { useStore } from '../store';
 
 export const Playlists = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
 
-  const [playlists, setPlaylists] = useState<Playlist[]>();
+  const [playlists, setPlaylists] = useState<SimplifiedPlaylist[]>();
 
   const getPlaylists = async () => {
     const result = await axios.get('https://api.spotify.com/v1/me/playlists', {

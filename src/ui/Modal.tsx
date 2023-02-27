@@ -25,8 +25,10 @@ export const Modal = ({ playlistId }: ModalProps) => {
   useEffect(() => {
     getPlaylist(playlistId);
   }, [playlistId]);
-
-  console.log(playlist?.tracks.items);
+  {
+    /*@ts-ignore*/
+    console.log(playlist?.tracks.items);
+  }
 
   return (
     <div>
