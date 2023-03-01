@@ -29,7 +29,7 @@ export const Modal = () => {
   }
 
   return (
-    <div className="bg-gray-800 text-white rounded-lg p-4">
+    <div className="bg-gray-800 text-white rounded-lg p-4 my-4">
       <div className="flex justify-between items-center">
         <span className="text-2xl font-bold">{playlist?.name}</span>
         <button

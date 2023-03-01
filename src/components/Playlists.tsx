@@ -34,8 +34,7 @@ export const Playlists = () => {
   }, [parent]);
 
   return (
-    <div className="my-4" ref={parent}>
-      {typeof selectedPlaylist === 'string' && <Modal />}
+    <div ref={parent}>
       <ul className="flex flex-row gap-5 flex-wrap pt-4">
         {playlists &&
           playlists.map((playlist) => {
@@ -48,6 +47,7 @@ export const Playlists = () => {
             );
           })}
       </ul>
+      {typeof selectedPlaylist === 'string' && <Modal />}
     </div>
   );
 };
