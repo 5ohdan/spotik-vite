@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Auth } from './pages/Auth';
+import Login from './pages/Auth';
 import { Playlists } from './components/Playlists';
 
 function App() {
@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <div className="p-6">
-        <Auth />
+        <Login />
 
         <Playlists />
       </div>

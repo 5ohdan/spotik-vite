@@ -22,6 +22,9 @@ export const Playlists = () => {
         'Content-Type': 'application/json',
       },
     });
+    if(result.status === 401) {
+      
+    }
     setPlaylists(result.data.items);
   };
 
