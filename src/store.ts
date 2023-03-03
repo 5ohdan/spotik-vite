@@ -6,14 +6,13 @@ type State = {
 };
 
 type Actions = {
-  setIsLogged: (isLogged: State['isLogged']) => void;
+  setIsLogged: (login: State['isLogged']) => void;
   setSelectedPlaylist: (id: State['selectedPlaylist']) => void;
 };
 
 export const useStore = create<State & Actions>()((set) => ({
   isLogged: false,
   selectedPlaylist: null,
-  setSelectedPlaylist: (id: string | null) =>
-    set(() => ({ selectedPlaylist: id })),
-  setIsLogged: () => {},
+  setSelectedPlaylist: (id) => set(() => ({ selectedPlaylist: id })),
+  setIsLogged: (login) => set(() => ({ isLogged: login })),
 }));

@@ -6,13 +6,14 @@ import { useEffect, useState, useRef } from 'react';
 import { PlaylistsItem } from './PlaylistsItem';
 
 import { SimplifiedPlaylist } from 'spotify-types';
-import { Modal } from '../ui/Modal';
-import { useStore } from '../store';
+import { Modal } from '../../../ui/Modal';
+import { useStore } from '../../../store';
 
 export const Playlists = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
 
   const [playlists, setPlaylists] = useState<SimplifiedPlaylist[]>();
+
   const parent = useRef(null);
 
   const getPlaylists = async () => {
@@ -22,9 +23,6 @@ export const Playlists = () => {
         'Content-Type': 'application/json',
       },
     });
-    if(result.status === 401) {
-      
-    }
     setPlaylists(result.data.items);
   };
 

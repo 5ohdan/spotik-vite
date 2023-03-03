@@ -1,10 +1,10 @@
-import { helper } from '../auth';
+import { getAuthProps } from '../helpers';
 import { urlParams } from '../constants';
 
 export const Login = () => {
   const url = new URL(import.meta.env.VITE_AUTH_URL);
 
-  helper();
+  getAuthProps();
 
   return (
     <>
