@@ -6,7 +6,7 @@ const scopes =
 const params = new URLSearchParams({
   response_type: 'token',
   client_id: import.meta.env.VITE_CLIENT_ID,
-  redirect_uri: 'http://localhost:5173/',
+  redirect_uri: 'https://spotik-vite.vercel.app/',
   scope: scopes,
 });
 
