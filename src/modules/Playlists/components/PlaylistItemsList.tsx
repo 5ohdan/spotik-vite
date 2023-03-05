@@ -1,32 +1,21 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Playlist } from 'spotify-types';
 import { useStore } from '../../../store';
+import { getPlaylist } from '../helpers';
+import { X } from 'lucide-react';
 
 export const PLaylistItemsList = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
   const [playlist, setPlaylist] = useState<Playlist>();
 
-  const getPlaylist = async (id: string) => {
-    const result = await axios.get(
-      `https://api.spotify.com/v1/playlists/${id}`,
-      {
-        headers: {
-          Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
-          'Content-Type': 'application/json',
-        },
-      }
-    );
-    setPlaylist(result.data);
-  };
+  useEffect(() => {
+    selectedPlaylist &&
+      getPlaylist(selectedPlaylist).then((result) => setPlaylist(result));
+  }, [selectedPlaylist]);
 
   useEffect(() => {
     selectedPlaylist && getPlaylist(selectedPlaylist);
   }, [selectedPlaylist]);
-  {
-    /*@ts-ignore*/
-    console.log(playlist?.tracks.items);
-  }
 
   return (
     <div className="bg-gray-800 text-white rounded-lg p-4 my-4">
@@ -36,7 +25,7 @@ export const PLaylistItemsList = () => {
           className="bg-green-500 p-2 rounded-md"
           onClick={() => setSelectedPlaylist(null)}
         >
-          X
+          <X />
         </button>
       </div>
       <ul>

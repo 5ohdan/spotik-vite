@@ -37,7 +37,7 @@ export const Playlists = () => {
             );
           })}
       </ul>
-      {typeof selectedPlaylist === 'string' && <PLaylistItemsList />}
+      {selectedPlaylist && <PLaylistItemsList />}
     </div>
   );
 };
