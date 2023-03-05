@@ -4,7 +4,7 @@ import { useStore } from '../../../store';
 import { getPlaylist } from '../helpers';
 import { X } from 'lucide-react';
 
-export const PLaylistItemsList = () => {
+export const PlaylistItemsList = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
   const [playlist, setPlaylist] = useState<Playlist>();
 

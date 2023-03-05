@@ -2,10 +2,15 @@ import axios from 'axios';
 
 import { Playlist, SimplifiedPlaylist } from 'spotify-types';
 
+let token = localStorage.getItem('access_token');
+
 export const getSimplifiedPlaylists = async () => {
+  const token = localStorage.getItem('access_token');
+  // if (token === undefined) return;
+
   const result = await axios.get('https://api.spotify.com/v1/me/playlists', {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   });
@@ -15,7 +20,7 @@ export const getSimplifiedPlaylists = async () => {
 export const getPlaylist = async (id: string) => {
   const result = await axios.get(`https://api.spotify.com/v1/playlists/${id}`, {
     headers: {
-      Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
+      Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json',
     },
   });

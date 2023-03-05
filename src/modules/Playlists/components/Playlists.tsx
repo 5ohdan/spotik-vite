@@ -2,7 +2,7 @@ import autoAnimate from '@formkit/auto-animate';
 import { SimplifiedPlaylist } from 'spotify-types';
 import { useEffect, useState, useRef } from 'react';
 
-import { PLaylistItemsList } from './PlaylistItemsList';
+import { PlaylistItemsList } from './PlaylistItemsList';
 import { useStore } from '../../../store';
 import { getSimplifiedPlaylists } from '../helpers';
 
@@ -37,7 +37,7 @@ export const Playlists = () => {
             );
           })}
       </ul>
-      {selectedPlaylist && <PLaylistItemsList />}
+      {selectedPlaylist && <PlaylistItemsList />}
     </div>
   );
 };
