@@ -1,33 +1,22 @@
-import axios from 'axios';
 import autoAnimate from '@formkit/auto-animate';
-
+import { SimplifiedPlaylist } from 'spotify-types';
 import { useEffect, useState, useRef } from 'react';
 
-import { PlaylistsItem } from './PlaylistsItem';
-
-import { SimplifiedPlaylist } from 'spotify-types';
-import { Modal } from '../../../ui/Modal';
+import { PLaylistItemsList } from './PlaylistItemsList';
 import { useStore } from '../../../store';
+import { getSimplifiedPlaylists } from '../helpers';
+
+import { PlaylistsItem } from './PlaylistsItem';
 
 export const Playlists = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
 
   const [playlists, setPlaylists] = useState<SimplifiedPlaylist[]>();
 
-  const parent = useRef(null);
-
-  const getPlaylists = async () => {
-    const result = await axios.get('https://api.spotify.com/v1/me/playlists', {
-      headers: {
-        Authorization: `Bearer ${import.meta.env.VITE_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-    });
-    setPlaylists(result.data.items);
-  };
+  const parent = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    getPlaylists();
+    getSimplifiedPlaylists().then((result) => setPlaylists(result));
   }, []);
 
   useEffect(() => {
@@ -48,7 +37,7 @@ export const Playlists = () => {
             );
           })}
       </ul>
-      {typeof selectedPlaylist === 'string' && <Modal />}
+      {typeof selectedPlaylist === 'string' && <PLaylistItemsList />}
     </div>
   );
 };

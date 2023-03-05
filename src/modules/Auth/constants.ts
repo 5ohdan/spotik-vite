@@ -1,3 +1,5 @@
+export const url = new URL(import.meta.env.VITE_AUTH_URL);
+
 const scopes =
   'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public';
 

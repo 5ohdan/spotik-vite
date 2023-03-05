@@ -1,9 +1,9 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Playlist } from 'spotify-types';
-import { useStore } from '../store';
+import { useStore } from '../../../store';
 
-export const Modal = () => {
+export const PLaylistItemsList = () => {
   const { selectedPlaylist, setSelectedPlaylist } = useStore();
   const [playlist, setPlaylist] = useState<Playlist>();
 

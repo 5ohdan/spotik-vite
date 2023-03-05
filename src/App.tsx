@@ -1,15 +1,12 @@
-import { useState } from 'react';
-import Login from './pages/Auth';
-import { Playlists } from './pages/Playlists/components/Playlists';
+import Login from './modules/Auth';
+import Playlists from './modules/Playlists';
 
 function App() {
   return (
-    <>
-      <div className="p-6">
-        <Login />
-        <Playlists />
-      </div>
-    </>
+    <div className="p-6">
+      <Login />
+      <Playlists />
+    </div>
   );
 }
 
