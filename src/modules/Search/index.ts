@@ -1,3 +1,3 @@
-import { SearchInput } from './components/SearchInput';
+import { Search } from './Search';
 
-export default SearchInput;
+export default Search;

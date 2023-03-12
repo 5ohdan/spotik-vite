@@ -13,7 +13,7 @@ export const SearchInput = () => {
   return (
     <form
       onSubmit={submitHandler}
-      className="flex gap-2 items-center justify-center p-5 bg-gray-800"
+      className="flex gap-2 items-center justify-center p-5 bg-black"
     >
       <label
         htmlFor="search-input"
@@ -22,7 +22,8 @@ export const SearchInput = () => {
         Search
       </label>
       <input
-        className="p-2 rounded-md"
+        placeholder="What do you want to listen to?"
+        className="p-2 rounded-full w-96"
         id="search-input"
         type="text"
         value={inputValue}

@@ -12,8 +12,12 @@ const getAuthProps = () => {
 export const isUserAuthenticated = async () => {
   let token = localStorage.getItem('access_token');
   const { access_token } = getAuthProps();
-  !token && !access_token && location.replace(`${authPath}`);
-  token = access_token;
+  if (token === undefined || access_token === null) {
+    location.replace(`${authPath}`);
+  }
+  if (access_token) {
+    token = access_token;
+  }
   const response = await fetch(`${import.meta.env.VITE_BASE_URL}`, {
     method: 'GET',
     headers: {
@@ -21,7 +25,11 @@ export const isUserAuthenticated = async () => {
       'Content-Type': 'application/json',
     },
   });
-  response.status === 401 && location.replace(`${authPath}`);
-  access_token && localStorage.setItem('access_token', access_token);
+  if (response.status === 401) {
+    location.replace(`${authPath}`);
+  }
+  if (access_token !== null) {
+    localStorage.setItem('access_token', access_token);
+  }
   location.hash = '';
 };

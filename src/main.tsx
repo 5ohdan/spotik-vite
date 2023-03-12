@@ -11,18 +11,20 @@ const router = createBrowserRouter([
   {
     path: '/',
     element: <App />,
-  },
-  {
-    path: '/auth',
-    element: <Auth />,
-  },
-  {
-    path: '/playlists',
-    element: <Playlists />,
-  },
-  {
-    path: '/search',
-    element: <Search />,
+    children: [
+      {
+        path: '/playlists',
+        element: <Playlists />,
+      },
+      {
+        path: '/search',
+        element: <Search />,
+      },
+      {
+        path: '/auth',
+        element: <Auth />,
+      },
+    ],
   },
 ]);
 

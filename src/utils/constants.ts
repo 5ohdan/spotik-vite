@@ -6,7 +6,7 @@ const scopes =
 const params = new URLSearchParams({
   response_type: 'token',
   client_id: import.meta.env.VITE_CLIENT_ID,
-  redirect_uri: `${import.meta.env.VITE_REDIRECT_URI}`,
+  redirect_uri: import.meta.env.VITE_REDIRECT_URI,
   scope: scopes,
 });
 
