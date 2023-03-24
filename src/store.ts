@@ -2,17 +2,17 @@ import { create } from 'zustand';
 
 type State = {
   isLogged: boolean;
-  selectedPlaylist: string | null;
+  openedPlaylist: string | null;
 };
 
 type Actions = {
   setIsLogged: (login: State['isLogged']) => void;
-  setSelectedPlaylist: (id: State['selectedPlaylist']) => void;
+  setOpenedPlaylist: (id: State['openedPlaylist']) => void;
 };
 
 export const useStore = create<State & Actions>()((set) => ({
   isLogged: false,
-  selectedPlaylist: null,
-  setSelectedPlaylist: (id) => set(() => ({ selectedPlaylist: id })),
+  openedPlaylist: null,
+  setOpenedPlaylist: (id) => set(() => ({ openedPlaylist: id })),
   setIsLogged: (login) => set(() => ({ isLogged: login })),
 }));

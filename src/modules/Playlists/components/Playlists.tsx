@@ -24,8 +24,8 @@ export const Playlists = () => {
   }, [parent]);
 
   return (
-    <div ref={parent}>
-      <ul className="flex flex-row gap-5 flex-wrap pt-4">
+    <div className="p-6" ref={parent}>
+      <ul className="flex flex-row gap-5 flex-wrap">
         {playlists &&
           playlists.map((playlist) => {
             return (

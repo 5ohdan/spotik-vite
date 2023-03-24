@@ -12,7 +12,8 @@ const getAuthProps = () => {
 export const isUserAuthenticated = async () => {
   let token = localStorage.getItem('access_token');
   const { access_token } = getAuthProps();
-  if (token === undefined || access_token === null) {
+  if (token === null && access_token === null) {
+    console.log('token and access_token are "empty"');
     location.replace(`${authPath}`);
   }
   if (access_token) {
@@ -26,6 +27,7 @@ export const isUserAuthenticated = async () => {
     },
   });
   if (response.status === 401) {
+    console.log('code is equals to', response.status);
     location.replace(`${authPath}`);
   }
   if (access_token !== null) {
