@@ -9,7 +9,7 @@ export const Sidebar = () => {
 
   useEffect(() => {
     getSimplifiedPlaylists().then((result) => setPlaylistList(result));
-  }, [playlistList]);
+  }, []);
 
   return (
     <SidebarLayout>
