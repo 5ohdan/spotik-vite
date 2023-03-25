@@ -6,6 +6,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Auth from './modules/Auth';
 import Playlists from './modules/Playlists';
 import Search from './modules/Search';
+import SinglePlaylist from './modules/SinglePlaylist';
 
 const router = createBrowserRouter([
   {
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
       {
         path: 'auth',
         element: <Auth />,
+      },
+      {
+        path: 'playlist/:playlistId',
+        element: <SinglePlaylist />,
       },
     ],
   },

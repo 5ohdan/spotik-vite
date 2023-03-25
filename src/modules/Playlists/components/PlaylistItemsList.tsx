@@ -5,17 +5,18 @@ import { getPlaylist } from '../helpers';
 import { X } from 'lucide-react';
 
 export const PlaylistItemsList = () => {
-  const { selectedPlaylist, setSelectedPlaylist } = useStore();
+  const shownPlaylistId = useStore((state) => state.shownPlaylistId);
+  const setShownPlaylistId = useStore((state) => state.setShownPlaylistId);
   const [playlist, setPlaylist] = useState<Playlist>();
 
   useEffect(() => {
-    selectedPlaylist &&
-      getPlaylist(selectedPlaylist).then((result) => setPlaylist(result));
-  }, [selectedPlaylist]);
+    shownPlaylistId &&
+      getPlaylist(shownPlaylistId).then((result) => setPlaylist(result));
+  }, [shownPlaylistId]);
 
   useEffect(() => {
-    selectedPlaylist && getPlaylist(selectedPlaylist);
-  }, [selectedPlaylist]);
+    shownPlaylistId && getPlaylist(shownPlaylistId);
+  }, [shownPlaylistId]);
 
   return (
     <div className="bg-gray-800 text-white rounded-lg p-4 my-4">
@@ -23,7 +24,7 @@ export const PlaylistItemsList = () => {
         <span className="text-2xl font-bold">{playlist?.name}</span>
         <button
           className="bg-green-500 p-2 rounded-md"
-          onClick={() => setSelectedPlaylist(null)}
+          onClick={() => setShownPlaylistId(null)}
         >
           <X />
         </button>

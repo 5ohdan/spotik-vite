@@ -9,7 +9,8 @@ import { getSimplifiedPlaylists } from '../helpers';
 import { PlaylistsItem } from './PlaylistsItem';
 
 export const Playlists = () => {
-  const { selectedPlaylist, setSelectedPlaylist } = useStore();
+  const shownPlaylistId = useStore((state) => state.shownPlaylistId);
+  const setShownPlaylistId = useStore((state) => state.setShownPlaylistId);
 
   const [playlists, setPlaylists] = useState<SimplifiedPlaylist[]>();
 
@@ -32,12 +33,12 @@ export const Playlists = () => {
               <PlaylistsItem
                 playlistItem={playlist}
                 key={playlist.id}
-                setPlaylist={() => setSelectedPlaylist(playlist.id)}
+                setPlaylist={() => setShownPlaylistId(playlist.id)}
               />
             );
           })}
       </ul>
-      {selectedPlaylist && <PlaylistItemsList />}
+      {shownPlaylistId && <PlaylistItemsList />}
     </div>
   );
 };

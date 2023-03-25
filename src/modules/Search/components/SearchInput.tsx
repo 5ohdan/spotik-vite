@@ -15,10 +15,7 @@ export const SearchInput = () => {
       onSubmit={submitHandler}
       className="flex gap-2 items-center justify-center p-5 bg-black"
     >
-      <label
-        htmlFor="search-input"
-        className="text-green-500 text-2xl font-bold"
-      >
+      <label htmlFor="search-input" className="text-green-500 text-2xl">
         Search
       </label>
       <input

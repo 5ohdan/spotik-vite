@@ -5,8 +5,6 @@ import { Playlist, SimplifiedPlaylist } from 'spotify-types';
 let token = localStorage.getItem('access_token');
 
 export const getSimplifiedPlaylists = async () => {
-  const token = localStorage.getItem('access_token');
-
   const result = await axios.get('https://api.spotify.com/v1/me/playlists', {
     headers: {
       Authorization: `Bearer ${token}`,

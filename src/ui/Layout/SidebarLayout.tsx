@@ -1,5 +1,6 @@
 import { ReactElement } from 'react';
 import Logo from '../../assets/Green_Logo.png';
+import { Link } from 'react-router-dom';
 
 export const SidebarLayout = ({
   children,
@@ -14,13 +15,13 @@ export const SidebarLayout = ({
       <div className="flex flex-col">
         <ul className="text-white text-lg">
           <li className="hover:underline">
-            <a href="/">Home</a>
+            <Link to="/">Home</Link>
           </li>
           <li className="hover:underline">
-            <a href="/search">Search</a>
+            <Link to="/search">Search</Link>
           </li>
           <li className="hover:underline">
-            <a href="/playlists">Playlists</a>
+            <Link to="/playlists">Playlists</Link>
           </li>
         </ul>
       </div>

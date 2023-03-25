@@ -1,18 +1,26 @@
 import { create } from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 type State = {
   isLogged: boolean;
-  openedPlaylist: string | null;
+  shownPlaylistId: string | null;
+  selectedPlaylistId: string | null;
 };
 
 type Actions = {
   setIsLogged: (login: State['isLogged']) => void;
-  setOpenedPlaylist: (id: State['openedPlaylist']) => void;
+  setShownPlaylistId: (id: State['shownPlaylistId']) => void;
+  setSelectedPlaylistId: (id: State['selectedPlaylistId']) => void;
 };
 
-export const useStore = create<State & Actions>()((set) => ({
-  isLogged: false,
-  openedPlaylist: null,
-  setOpenedPlaylist: (id) => set(() => ({ openedPlaylist: id })),
-  setIsLogged: (login) => set(() => ({ isLogged: login })),
-}));
+export const useStore = create<State & Actions>()(
+  devtools((set) => ({
+    isLogged: false,
+    shownPlaylistId: null,
+    selectedPlaylistId: null,
+
+    setIsLogged: (login) => set(() => ({ isLogged: login })),
+    setShownPlaylistId: (id) => set(() => ({ shownPlaylistId: id })),
+    setSelectedPlaylistId: (id) => set(() => ({ shownPlaylistId: id })),
+  }))
+);
