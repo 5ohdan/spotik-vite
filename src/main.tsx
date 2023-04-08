@@ -1,12 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
 import App from './App';
 import './index.css';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Auth from './modules/Auth';
 import Playlists from './modules/Playlists';
 import Search from './modules/Search';
 import SinglePlaylist from './modules/SinglePlaylist';
+import { getPlaylist } from './modules/SinglePlaylist/helpers';
+import { Playlist } from 'spotify-types/typings/playlist';
 
 const router = createBrowserRouter([
   {
@@ -28,6 +31,12 @@ const router = createBrowserRouter([
       {
         path: 'playlist/:playlistId',
         element: <SinglePlaylist />,
+        loader: async ({ params }) => {
+          const { name, tracks, images } = (await getPlaylist(
+            params.playlistId!
+          )) as Playlist;
+          return { name, tracks, images };
+        },
       },
     ],
   },

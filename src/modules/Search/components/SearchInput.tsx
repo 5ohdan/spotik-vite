@@ -1,31 +1,29 @@
-import { FormEvent, useState } from 'react';
-import { getSearchResults } from '../helpers';
+import { FormEvent } from 'react';
+import { Form } from 'react-router-dom';
 
-export const SearchInput = () => {
-  const [inputValue, setInputValue] = useState<string>('');
+interface SearchProps {
+  value: string;
+  setValue: (input: string) => void;
+  formSubmit: (event: FormEvent) => void;
+}
 
-  const submitHandler = async (event: FormEvent) => {
-    event.preventDefault();
-    const result = await getSearchResults(inputValue.trim());
-    console.log(result.data);
-  };
-
+export const SearchInput = ({ value, setValue, formSubmit }: SearchProps) => {
   return (
-    <form
-      onSubmit={submitHandler}
+    <Form
+      onSubmit={formSubmit}
       className="flex gap-2 items-center justify-center p-5 bg-black"
     >
       <label htmlFor="search-input" className="text-green-500 text-2xl">
         Search
       </label>
       <input
-        placeholder="What do you want to listen to?"
+        placeholder="What do you want to listen?"
         className="p-2 rounded-full w-96"
         id="search-input"
         type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
+        value={value}
+        onChange={(e) => setValue(e.target.value)}
       />
-    </form>
+    </Form>
   );
 };

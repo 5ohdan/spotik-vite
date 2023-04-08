@@ -1,17 +1,17 @@
-import { useEffect } from 'react';
+import { useLoaderData } from 'react-router-dom';
+import { Playlist } from 'spotify-types';
+
 import { Header } from './components/Header';
-import { useStore } from '../../store';
-import { getTracks } from './helpers';
+import { Tracks } from './components/Tracks';
 
 export const SinglePlaylist = () => {
-  const selectedPlaylistId = useStore((state) => state.selectedPlaylistId);
-
-  useEffect(() => {
-    selectedPlaylistId && getTracks(selectedPlaylistId);
-  }, []);
+  const { name, tracks, images } = useLoaderData() as Playlist;
+  console.log({ name, tracks });
   return (
-    <div>
-      <Header />
+    <div className="p-4">
+      <Header name={name} image={images[0].url} />
+      {/*@ts-ignore */}
+      <Tracks tracks={tracks.items} />
     </div>
   );
 };

@@ -12,5 +12,6 @@ export const getSearchResults = async (input: string) => {
       },
     }
   );
-  return result;
+  const { albums, artists, tracks } = result.data;
+  return { albums, artists, tracks };
 };

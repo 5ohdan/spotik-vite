@@ -9,9 +9,9 @@ export const SidebarLayout = ({
 }) => {
   return (
     <div className="p-6 flex flex-col gap-5 min-h-screen border-r border-gray-800 min-w-max">
-      <a href="/">
+      <Link to="/">
         <img src={Logo} className="max-w-[130px]" />
-      </a>
+      </Link>
       <div className="flex flex-col">
         <ul className="text-white text-lg">
           <li className="hover:underline">
