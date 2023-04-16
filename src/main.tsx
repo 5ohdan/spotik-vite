@@ -10,6 +10,7 @@ import Search from './modules/Search';
 import SinglePlaylist from './modules/SinglePlaylist';
 import { getPlaylist } from './modules/SinglePlaylist/helpers';
 import { Playlist } from 'spotify-types/typings/playlist';
+import Player from './modules/Player';
 
 const router = createBrowserRouter([
   {

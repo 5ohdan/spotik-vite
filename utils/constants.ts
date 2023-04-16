@@ -1,7 +1,7 @@
 const url = new URL(import.meta.env.VITE_AUTH_URL);
 
 const scopes =
-  'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public';
+  'playlist-read-private playlist-read-collaborative playlist-modify-private playlist-modify-public streaming user-read-playback-state web-playback ';
 
 const params = new URLSearchParams({
   response_type: 'token',

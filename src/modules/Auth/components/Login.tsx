@@ -1,4 +1,4 @@
-import { authPath } from '../../../utils/constants';
+import { authPath } from '../../../../utils/constants';
 
 export const Login = () => {
   return (

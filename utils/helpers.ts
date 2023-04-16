@@ -5,7 +5,6 @@ const getAuthProps = () => {
   const access_token = searchParams.get('access_token');
   const token_type = searchParams.get('token_type');
   const expires_in = searchParams.get('expires_in');
-  console.log({ access_token, token_type, expires_in });
   return { access_token, token_type, expires_in };
 };
 
